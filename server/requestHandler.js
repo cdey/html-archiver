@@ -5,10 +5,8 @@ module.exports.search = (req, res) => {
   var searchQuery = req.body.searchQuery;
 
   if (Number.isInteger(parseInt(searchQuery))) {
-    console.log("It's a number");
     db.searchUrlByJobId(searchQuery)
       .then(results => {
-        console.log(results, "RESULTS 1")
         if (results.length === 0) {
           throw error;
         } else {
@@ -16,19 +14,17 @@ module.exports.search = (req, res) => {
         }
       })
       .then(results => {
-        console.log(results, "RESULTS 2")
         var result = results[0].result;
         if (Number.isInteger(parseInt(result))) {
-          res.status(201).send(`Robots are currently working on your request. Please check back later (Job Id: ${result})`);
+          res.status(201).json({response: `Robots are currently working on your request. Please check back later (Job Id: ${result}).`, type: 'job id'});
         } else {
-          res.status(201).send(`${result}`);
+          res.status(201).json({response: `${result}`, type: 'filepath'});
         }
       })
       .catch(error => {
         res.status(404).send('Invalid job id');
       })
   } else {
-    console.log("It's a string");
     db.searchUrlByUrl(searchQuery)
       .then(results => {
         console.log(results, "RESULTS 1");
@@ -40,12 +36,11 @@ module.exports.search = (req, res) => {
         }
       })
       .then(results => {
-        console.log(results, "RESULTS 2")
         var result = results[0].result;
         if (Number.isInteger(parseInt(result))) {
-          res.status(201).send(`Robots are currently working on your request. Please check back later (Job Id: ${result})`);
+          res.status(201).json({response: `Robots are currently working on your request. Please check back later (Job Id: ${result}).`, type: 'job id'});
         } else {
-          res.status(201).send(`${result}`);
+          res.status(201).json({response: `${result}`, type: 'filepath'});
         }
       })
       .catch(error => {

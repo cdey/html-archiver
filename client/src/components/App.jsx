@@ -6,6 +6,10 @@ export class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      message: ''
+    }
+
     this.submitSearch = this.submitSearch.bind(this);
   }
 
@@ -16,9 +20,11 @@ export class App extends React.Component {
       contentType: 'application/json',
       data: JSON.stringify({ searchQuery: searchQuery}),
       success: (result) => {
-        console.log(result);
-        if (result) {
-          window.location.href += result;
+        console.log(result, "RESULT");
+        if (result.type === 'filepath') {
+          window.location.href += result.response;
+        } else {
+          this.setState({ message: result.response });
         }
       },
       error: (error) => {
@@ -37,6 +43,11 @@ export class App extends React.Component {
           HTML Archiver.
         </p>
         <SearchBar submitSearch={ this.submitSearch } />
+         { this.state.message &&
+          <div>
+            { this.state.message }
+          </div>
+        }
       </div>
     )
   }
