@@ -1,7 +1,7 @@
 # html-archiver
 An API that allows users to submit job requests by url and retrieve html by job id.
 
-A web platform that allows users to retrieve html by url or job id.
+Also has a web platform that allows users to retrieve html by url or job id.
 
 Uses a queue and worker to process jobs which entail downloading html.
 
