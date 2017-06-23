@@ -37,7 +37,7 @@ export class App extends React.Component {
       <div className="cover-container">
         <h1 className="cover-heading">HTML Archiver.</h1>
         <p className="lead">
-          HTML Archiver.
+          Archives html from url.
         </p>
         <SearchBar submitSearch={ this.submitSearch } />
          { this.state.message &&

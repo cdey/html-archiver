@@ -26,7 +26,6 @@ module.exports.search = (req, res) => {
   } else {
     db.searchUrlByUrl(searchQuery)
       .then(results => {
-        console.log(results, "RESULTS 1");
         if (results.length === 0) {
           return db.addUrl(searchQuery);
         } else {
