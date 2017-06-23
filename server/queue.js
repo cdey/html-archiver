@@ -26,26 +26,3 @@ q.on('job failed', (error) => {
 });
 
 module.exports = q;
-
-module.exports.clearQueue = () => {
-  kue.Job.rangeByState('active', 0, 100, 'asc', function(err, jobs) {
-    jobs.forEach(function(job) {
-      job.remove(function() { console.log('removed active: ', job.id) });
-    });
-  });
-  kue.Job.rangeByState('complete', 0, 100, 'asc', function(err, jobs) {
-    jobs.forEach(function(job) {
-      job.remove(function() { console.log('removed completed: ', job.id) });
-    });
-  });
-  kue.Job.rangeByState('inactive', 0, 100, 'asc', function(err, jobs) {
-    jobs.forEach(function(job) {
-      job.remove(function() { console.log('removed inactive: ', job.id) });
-    });
-  });
-  kue.Job.rangeByState('failed', 0, 100, 'asc', function(err, jobs) {
-    jobs.forEach(function(job) {
-      job.remove(function() { console.log('removed failed: ', job.id) });
-    });
-  });
-};

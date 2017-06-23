@@ -1,5 +1,4 @@
 body {
-  /*background: url(https://static.pexels.com/photos/26418/pexels-photo-26418.jpg) no-repeat center center fixed; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -7,6 +6,10 @@ body {
   height: 100%;
   color: black;
   text-align: center;
+}
+
+#message {
+margin-top: 20px;
 }
 
 .cover-heading {

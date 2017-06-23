@@ -26,7 +26,6 @@ module.exports = cron.schedule('1 * * * * *', () => {
 
   db.findNotArchived()
     .then(results => {
-      console.log(results, "LIST OF URLS");
       results.forEach(result => {
         addToQueue(result.url);
       })

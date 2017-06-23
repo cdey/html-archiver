@@ -20,7 +20,6 @@ export class App extends React.Component {
       contentType: 'application/json',
       data: JSON.stringify({ searchQuery: searchQuery}),
       success: (result) => {
-        console.log(result, "RESULT");
         if (result.type === 'filepath') {
           window.location.href += result.response;
         } else {
@@ -33,8 +32,6 @@ export class App extends React.Component {
     })
   }
 
-
-
   render() {
     return (
       <div className="cover-container">
@@ -44,7 +41,7 @@ export class App extends React.Component {
         </p>
         <SearchBar submitSearch={ this.submitSearch } />
          { this.state.message &&
-          <div>
+          <div id="message">
             { this.state.message }
           </div>
         }

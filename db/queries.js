@@ -20,6 +20,7 @@ module.exports = {
     return query(`SELECT url FROM jobs WHERE url=LOWER('${searchUrl}')`)
   },
   searchUrlByJobId: (jobId) => {
+    console.log('jobid', jobId)
     return query(`SELECT url FROM jobs WHERE id=${jobId}`)
   },
   isUrlArchived: (url) => {
@@ -33,8 +34,8 @@ module.exports = {
       .then(result => {
         return query(`SELECT id as result FROM jobs WHERE url='${url}'`)
       })
-      // .catch(error => {
-      //   console.log(error)
-      // })
+      .catch(error => {
+        console.log(error)
+      })
   }
 }
