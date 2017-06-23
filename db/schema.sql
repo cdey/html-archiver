@@ -12,7 +12,3 @@ CREATE TABLE jobs (
   PRIMARY KEY (ID)
 );
 
-/*  Run in the command line to create database and table:
- *    mysql -u (DB_USER) < db/schema.sql
- *    mysql -u (DB_USER) -p (DB_PASSWORD) */
-

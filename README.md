@@ -13,11 +13,17 @@ Get request for jobs endpoint where id is a number (ex: 1)
 ```
 curl http://127.0.0.1:3000/jobs/id
 ```
+If job complete, returns HTML.
+If job incomplete, returns string with job id.
 
 Post request for jobs endpoint where weburl is a string (ex: www.google.com)
 ```
 curl -X POST 127.0.0.1:3000/jobs?url=weburl
 ```
+
+If job complete, returns HTML.
+If job incomplete, returns string with job id.
+
 # Requirements
 Redis, MySQL
 
